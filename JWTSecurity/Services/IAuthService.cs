@@ -1,8 +1,11 @@
-﻿namespace JWTSecurity.Services
+﻿using JWTSecurity.Models;
+
+namespace JWTSecurity.Services
 {
     public interface IAuthService
-    {
-        bool Verify();
+    {      
         string GenerateJwtToken(string username);
+        void RevokeToken();
+        void ChangePassword();
     }
 }

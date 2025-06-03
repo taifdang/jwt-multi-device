@@ -1,9 +1,10 @@
+using JWTSecurity.Middleware;
 using JWTSecurity.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.OpenApi.Models;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using StackExchange.Redis;
 using System.Text;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -57,8 +58,16 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 builder.Services.AddAuthentication();
+//redis
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.Configuration = builder.Configuration["Redis:Hostname"];
+});
 //add services
 builder.Services.AddScoped<IAuthService,AuthService>();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddDistributedMemoryCache();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -72,6 +81,8 @@ app.UseHttpsRedirection();
 //
 app.UseAuthentication();
 app.UseAuthorization();
+//
+app.UseCheckTokenMiddleware();
 
 app.MapControllers();
 

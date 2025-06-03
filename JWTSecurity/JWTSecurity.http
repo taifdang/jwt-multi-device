@@ -1,6 +1,6 @@
-@JWTSecurity_HostAddress = http://localhost:5099
+@JWTSecurity_HostAddress = https://localhost:7271
 
-GET {{JWTSecurity_HostAddress}}/weatherforecast/
+GET {{JWTSecurity_HostAddress}}/WeatherForecast/
 Accept: application/json
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHJpbmciLCJqdGkiOiIwZGI2MjZjOS1lMjAyLTQyNTEtYmUzNi1iOWYyOTRmZDJlMGEiLCJleHAiOjE3NDg4Nzg0NjcsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjcyNzEvIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzI3MS8ifQ.POZT6iyvtJjB-HLwxNOxydrF_flC6ckmYHMhomBSiCc
 ###

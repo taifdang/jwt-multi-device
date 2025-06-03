@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /JWTSecurity/appsettings.json
 /JWTSecurity/appsettings.Development.json
+/JWTSecurity/docker-compose.yml
